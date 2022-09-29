@@ -3,9 +3,7 @@
   <div v-show="isTrue">
     <FormSearch @search="search"/>
   </div>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Search
-  </button>
+
 
   <HomePage :vehicleSearch="vehicles"/>
 </template>

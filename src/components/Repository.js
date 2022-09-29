@@ -6,8 +6,8 @@ export default {
     data() {
         return {
             vehicles: [],
-            editVehicles:[]
-           , vehicle: {
+            editVehicles: []
+            , vehicle: {
                 id: '',
                 name: '',
                 model: '',
@@ -22,7 +22,7 @@ export default {
             valueEdit: {
                 id: '',
                 name: '',
-                model: '' ,
+                model: '',
                 price: '',
                 year: '',
                 type: '',
@@ -30,7 +30,30 @@ export default {
                 color: '',
                 vehicleCode: '',
                 amount: '',
-
+            },
+            valueSearch: {
+                id: '',
+                name: '',
+                model: '',
+                price: '',
+                year: '',
+                typee: '',
+                nation: '',
+                color: '',
+                vehicleCode: '',
+                amount: '',
+            },
+            valueAdd: {
+                id: '',
+                name: '',
+                model: '',
+                price: '',
+                year: '',
+                type: '',
+                nation: '',
+                color: '',
+                vehicleCode: '',
+                amount: '',
             }
         }
     },
@@ -41,23 +64,14 @@ export default {
         getAll() {
             axios.get(baseUrl + '/get-all')
                 .then(response => {
-                    console.log(response)
-                    this.vehicles = response.data;
+                    // console.log(response)
+                    return this.vehicles = response.data;
                 })
                 .catch(error => {
                     console.log(error);
                 })
         },
-        search() {
-            axios.get(baseUrl + '/find-any',)
-                .then(response => {
-                    console.log(response)
-                    this.vehicles = response.data;
-                })
-                .catch(error => {
-                    console.log(error);
-                })
-        },
+
         deleteVehicle(id) {
             axios.delete(`${baseUrl}/delete?id=${id}`)
                 .then(
@@ -67,7 +81,7 @@ export default {
                     console.log(error);
                 })
         },
-        findVehicle(id) {
+        findVehicleById(id) {
             axios.get(`${baseUrl}/get-by-id?id=${id}`)
                 .then(response => {
                     console.log(response.data)
@@ -88,15 +102,35 @@ export default {
         },
         updateVehicle() {
             axios.put(`${baseUrl}/update`, this.valueEdit)
-                .then( response => {
-                       console.log(response)
+                .then(response => {
+                    console.log(response)
+                    console.log(this.valueEdit)
+                    // this.vehicles = response.data;
+                    this.getAll();
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        },
+        findVehicleAny() {
+            axios.get(`${baseUrl}/find-any`, this.valueSearch)
+                .then(response => {
+                    console.log(response)
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        },
+        addVehicle() {
+            axios.post(`${baseUrl}/save`, this.valueAdd)
+                .then(response => {
+                    console.log(response)
                     this.getAll();
                 })
                 .catch(error => {
                     console.log(error);
                 })
         }
-
     }
 
 
