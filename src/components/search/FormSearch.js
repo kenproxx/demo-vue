@@ -17,29 +17,17 @@ export default {
                 vehicleCode: '',
                 amount: '',
 
-            }, vehicleEdit2: {
-                id: '',
-                name: '',
-                model: '',
-                price: '',
-                year: '',
-                type: '',
-                nation: '',
-                color: '',
-                vehicleCode: '',
-                amount: ''
             }
 
         }
     }, methods: {
         search(){
             this.$emit('search', this.valueSearch);
-            
         },
+
         check() {
-            console.log(this.valueSearch);
-            console.log(this.vehicleEdit);
-            console.log(this.vehicleEdit2);
+            console.log(this.vehicle);
+
 
         },
     },
