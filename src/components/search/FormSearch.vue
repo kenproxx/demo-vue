@@ -6,7 +6,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Modal tìm kiếm</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -15,25 +15,25 @@
           <form >
             <div class="form-control">
               <label for="recipient-name" class="col-form-label">Id</label>
-              <input  type="text" class="form-control"  v-model="valueSearch.id" @input="check">
+              <input  type="text" class="form-control"  value="{{vehicleValue.id}}">
               <label for="exampleFormControlInput1">Name</label>
-              <input type="text" class="form-control" v-model="valueSearch.name" >
+              <input type="text" class="form-control" value="${vehicleValue.id}" >
               <label for="exampleFormControlInput1">Model</label>
-              <input type="text" class="form-control" v-model="valueSearch.model" >
+              <input type="text" class="form-control"  >
               <label for="exampleFormControlInput1">Price</label>
-              <input type="text" class="form-control" v-model="valueSearch.price" >
+              <input type="text" class="form-control"  >
               <label for="exampleFormControlInput1">Year</label>
-              <input type="text" class="form-control" v-model="valueSearch.year" >
+              <input type="text" class="form-control" >
               <label for="exampleFormControlInput1">Type</label>
-              <input type="text" class="form-control" v-model="valueSearch.type">
+              <input type="text" class="form-control" >
               <label for="exampleFormControlInput1">Nation</label>
-              <input type="text" class="form-control" v-model="valueSearch.nation" >
+              <input type="text" class="form-control"  >
               <label for="exampleFormControlInput1">Color</label>
-              <input type="text" class="form-control" v-model="valueSearch.color" >
+              <input type="text" class="form-control"  >
               <label for="exampleFormControlInput1">Vehicle Code</label>
-              <input type="text" class="form-control" v-model="valueSearch.vehicleCode" >
+              <input type="text" class="form-control"  >
               <label for="exampleFormControlInput1">Amount</label>
-              <input type="text" class="form-control" v-model="valueSearch.amount" >
+              <input type="text" class="form-control" >
 
 
             </div>
@@ -42,7 +42,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" @click="search">Save changes</button>
+          <button type="button" class="btn btn-primary" @click="check">Save changes</button>
         </div>
       </div>
     </div>

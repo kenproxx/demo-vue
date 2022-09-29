@@ -4,7 +4,7 @@
     <FormSearch @search="search"/>
   </div>
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Launch demo modal
+    Search
   </button>
 
   <HomePage :vehicleSearch="vehicles"/>
