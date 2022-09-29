@@ -32,16 +32,16 @@ export default {
                 amount: '',
             },
             valueSearch: {
-                id: '',
-                name: '',
-                model: '',
-                price: '',
-                year: '',
-                typee: '',
-                nation: '',
-                color: '',
-                vehicleCode: '',
-                amount: '',
+                id: "",
+                name: "",
+                model: "",
+                price: "",
+                year: "",
+                type: "",
+                nation: "",
+                color: "",
+                vehicleCode: "",
+                amount: "",
             },
             valueAdd: {
                 id: '',
@@ -61,6 +61,9 @@ export default {
         this.getAll();
     },
     methods: {
+        check() {
+          console.log(this.valueSearch.id);
+        },
         getAll() {
             axios.get(baseUrl + '/get-all')
                 .then(response => {
@@ -81,6 +84,7 @@ export default {
                     console.log(error);
                 })
         },
+
         findVehicleById(id) {
             axios.get(`${baseUrl}/get-by-id?id=${id}`)
                 .then(response => {
@@ -100,6 +104,7 @@ export default {
                     console.log(error);
                 })
         },
+
         updateVehicle() {
             axios.put(`${baseUrl}/update`, this.valueEdit)
                 .then(response => {
@@ -112,19 +117,26 @@ export default {
                     console.log(error);
                 })
         },
+
         findVehicleAny() {
             axios.get(`${baseUrl}/find-any`, this.valueSearch)
                 .then(response => {
                     console.log(response)
+                    console.log(this.valueSearch)
+                    this.vehicles = response.data;
                 })
                 .catch(error => {
+                    console.log(this.valueSearch)
+
                     console.log(error);
                 })
         },
+
         addVehicle() {
             axios.post(`${baseUrl}/save`, this.valueAdd)
                 .then(response => {
                     console.log(response)
+                    console.log(this.valueAdd)
                     this.getAll();
                 })
                 .catch(error => {

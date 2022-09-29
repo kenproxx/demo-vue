@@ -43,6 +43,7 @@
         <td>{{ vehicle.vehicleCode }}</td>
         <td>{{ vehicle.amount }}</td>
         <td>
+
           <button @click="findVehicleById(vehicle.id)"
                   type="button" class="btn btn-primary"
                   data-toggle="modal" data-target="#exampleModal">
@@ -124,7 +125,7 @@
           <form >
             <div class="form-control">
               <label for="recipient-name" class="col-form-label">Id</label>
-              <input type="text" class="form-control"  v-model="valueSearch.id" >
+              <input type="text" class="form-control"  v-model="valueSearch.id" @input="check" >
               <label for="exampleFormControlInput1">Name</label>
               <input type="text" class="form-control" v-model="valueSearch.name" >
               <label for="exampleFormControlInput1">Model</label>
@@ -134,7 +135,7 @@
               <label for="exampleFormControlInput1">Year</label>
               <input type="text" class="form-control" v-model="valueSearch.year">
               <label for="exampleFormControlInput1">Type</label>
-              <input type="text" class="form-control" v-model="valueSearch.typee">
+              <input type="text" class="form-control" v-model="valueSearch.type">
               <label for="exampleFormControlInput1">Nation</label>
               <input type="text" class="form-control" v-model="valueSearch.nation" >
               <label for="exampleFormControlInput1">Color</label>
