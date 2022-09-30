@@ -41,6 +41,7 @@ export default {
                 color: null,
                 vehicleCode: null,
                 amount: null,
+                
             },
             valueAdd: {
               
@@ -53,22 +54,24 @@ export default {
                 color: null,
                 vehicleCode: null,
                 amount: null,
+            },
+            page:{
+                page: 1,
+                size: 5
             }
+            
+            
         }
     },
     created() {
         this.getAll();
     },
     methods: {
-        check() {
-          console.log(this.valueSearchs.id);
-        },
 
         getAll() {
-            axios.get(baseUrl + '/get-all')
+            axios.get(`${baseUrl}/get-all?page=${this.page.page}&size=${this.page.size}`)
                 .then(response => {
-                    // console.log(response)
-                    return this.vehicles = response.data;
+                    this.vehicles = response.data;
                 })
                 .catch(error => {
                     console.log(error);
@@ -109,7 +112,6 @@ export default {
                 .then(response => {
                     console.log(response)
                     console.log(this.valueEdit)
-                    // this.vehicles = response.data;
                     this.getAll();
                 })
                 .catch(error => {
@@ -120,8 +122,6 @@ export default {
         findVehicleAny() {
             axios.post(`${baseUrl}/find-any`, this.valueSearchs)
                 .then(response => {
-                    console.log(this.valueSearchs)
-                    console.log(response)
                     this.vehicles = response.data;
                 })
                 .catch(error => {
@@ -141,6 +141,12 @@ export default {
                     console.log(error);
                 })
         },
+
+        check() {
+            console.log(this.valueSearchs.page)
+        },
+
+        
 
       
 
