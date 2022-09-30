@@ -60,13 +60,6 @@
 
   </div>
 
-  <!--  <div>Page now-->
-  <!--    <select name="" id="" v-model="page.page" @change="getAll">-->
-  <!--      <option value="1" selected>1</option>-->
-  <!--      <option value="2">2</option>-->
-  <!--      <option value="3">3</option>-->
-  <!--    </select>-->
-  <!--  </div>-->
 
   <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
@@ -84,7 +77,7 @@
 
 
   <div>Page size
-    <select name="" id="" v-model="page.size" @change="getAll">
+    <select v-model="page.size" @change="getAll">
       <option value="5" selected>5</option>
       <option value="10">10</option>
       <option value="20">20</option>
@@ -134,7 +127,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" @click="updateVehicle">Search</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" @click="updateVehicle">Edit</button>
         </div>
       </div>
     </div>
