@@ -2,6 +2,8 @@ import axios from 'axios';
 
 const baseUrl = 'http://localhost:8051/swagger-resources/svehicle';
 
+let regexNumber = new RegExp('^[0-9]+$');
+
 export default {
     data() {
         return {
@@ -41,10 +43,10 @@ export default {
                 color: null,
                 vehicleCode: null,
                 amount: null,
-                
+
             },
             valueAdd: {
-              
+
                 name: null,
                 model: null,
                 price: null,
@@ -55,12 +57,25 @@ export default {
                 vehicleCode: null,
                 amount: null,
             },
-            page:{
+            page: {
                 page: 1,
                 size: 5
+            },
+
+            valiValue: {
+
+                name: null,
+                model: null,
+                price: null,
+                year: null,
+                type: null,
+                nation: null,
+                color: null,
+                vehicleCode: null,
+                amount: null,
             }
-            
-            
+
+
         }
     },
     created() {
@@ -142,15 +157,40 @@ export default {
                 })
         },
 
-        check() {
-            console.log(this.valueSearchs.page)
+        checkValidNull(obj) {
+            for (var key in obj) {
+                if (obj[key] == null || obj[key] == "") {
+                    return false;
+                }
+            }
+            return true;
         },
+        insertVehicle() {
+            if (!this.checkValidNull(this.valueAdd)) {
+                alert("Vui lòng kiểm tra lại thông tin");
+            } else {
+                if (this.regexNum()) {
+                    this.addVehicle();
+                }
+            }
+        },
+        regexNum() {
+            if (regexNumber.test(this.valueAdd.price)
+                && regexNumber.test(this.valueAdd.year)
+                && regexNumber.test(this.valueAdd.amount)) {
+                return true
+            } else {
+                return false
+            }
+        },
+        setPage(page) {
+            if(page > 0){
+                this.page.page = page;
+                this.getAll();
+            }
 
-        
+        }
 
-      
 
+        }
     }
-
-
-}

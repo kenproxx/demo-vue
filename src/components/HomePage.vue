@@ -12,7 +12,7 @@
     Add
   </button>
 
-  <div>
+  <div style="height: 400px; overflow: auto; padding: 10px">
     <table class="table">
       <thead>
       <tr>
@@ -57,21 +57,38 @@
       </tbody>
     </table>
 
-    <div>Page now
-      <select name="" id="" v-model="page.page" @change="getAll">
-        <option value="1" selected>1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-      </select>
-    </div>
 
-    <div>Page size
-      <select name="" id="" v-model="page.size" @change="getAll">
-        <option value="5" selected>5</option>
-        <option value="10">10</option>
-        <option value="20">20</option>
-      </select>
-    </div>
+  </div>
+
+  <!--  <div>Page now-->
+  <!--    <select name="" id="" v-model="page.page" @change="getAll">-->
+  <!--      <option value="1" selected>1</option>-->
+  <!--      <option value="2">2</option>-->
+  <!--      <option value="3">3</option>-->
+  <!--    </select>-->
+  <!--  </div>-->
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item ">
+        <a class="page-link" href="#" tabindex="-1" @click="setPage(this.page.page - 1)">Previous</a>
+      </li>
+      <li class="page-item"><a class="page-link" @click="setPage(1)" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" @click="setPage(2)" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" @click="setPage(3)" href="#">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#" @click="setPage(this.page.page + 1)">Next</a>
+      </li>
+    </ul>
+  </nav>
+
+
+  <div>Page size
+    <select name="" id="" v-model="page.size" @change="getAll">
+      <option value="5" selected>5</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+    </select>
   </div>
 
   <!--  Form edit-->
@@ -87,7 +104,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <form :vali="valiForm">
+          <form>
             <div class="form-control">
               <label for="recipient-name" class="col-form-label">Id</label>
               <input type="text" class="form-control" readonly v-model="valueEdit.id">
@@ -190,30 +207,30 @@
           <form>
             <div class="form-control">
               <label for="exampleFormControlInput1">Name</label>
-              <input type="text" class="form-control" required v-model="valueAdd.name">
+              <input type="text" class="form-control" v-model="valueAdd.name">
               <label for="exampleFormControlInput1">Model</label>
-              <input type="text" class="form-control" required v-model="valueAdd.model">
+              <input type="text" class="form-control" v-model="valueAdd.model">
               <label for="exampleFormControlInput1">Price</label>
-              <input type="number" class="form-control" required v-model="valueAdd.price">
+              <input type="number" class="form-control" v-model="valueAdd.price">
               <label for="exampleFormControlInput1">Year</label>
-              <input type="number" class="form-control" required v-model="valueAdd.year">
+              <input type="number" class="form-control" v-model="valueAdd.year">
               <label for="exampleFormControlInput1">Type</label>
-              <input type="text" class="form-control" required v-model="valueAdd.type">
+              <input type="text" class="form-control" v-model="valueAdd.type">
               <label for="exampleFormControlInput1">Nation</label>
-              <input type="text" class="form-control" required v-model="valueAdd.nation">
+              <input type="text" class="form-control" v-model="valueAdd.nation">
               <label for="exampleFormControlInput1">Color</label>
-              <input type="text" class="form-control" required v-model="valueAdd.color">
+              <input type="text" class="form-control" v-model="valueAdd.color">
               <label for="exampleFormControlInput1">Vehicle Code</label>
-              <input type="text" class="form-control" required v-model="valueAdd.vehicleCode">
+              <input type="text" class="form-control" v-model="valueAdd.vehicleCode">
               <label for="exampleFormControlInput1">Amount</label>
-              <input type="number" class="form-control" required v-model="valueAdd.amount">
+              <input type="number" class="form-control" v-model="valueAdd.amount">
             </div>
 
           </form>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" data-dismiss="modal" @click="addVehicle">Add</button>
+          <button type="submit" class="btn btn-primary" data-dismiss="modal" @click="insertVehicle">Add</button>
         </div>
       </div>
     </div>
