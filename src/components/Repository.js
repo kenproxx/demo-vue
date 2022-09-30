@@ -5,55 +5,54 @@ const baseUrl = 'http://localhost:8051/swagger-resources/svehicle';
 export default {
     data() {
         return {
-            vehicles: [],
-            editVehicles: []
+            vehicles: []
             , vehicle: {
-                id: '',
-                name: '',
-                model: '',
-                price: '',
-                year: '',
-                type: '',
-                nation: '',
-                color: '',
-                vehicleCode: '',
-                amount: ''
+                id: null,
+                name: null,
+                model: null,
+                price: null,
+                year: null,
+                type: null,
+                nation: null,
+                color: null,
+                vehicleCode: null,
+                amount: null
             },
             valueEdit: {
-                id: '',
-                name: '',
-                model: '',
-                price: '',
-                year: '',
-                type: '',
-                nation: '',
-                color: '',
-                vehicleCode: '',
-                amount: '',
+                id: null,
+                name: null,
+                model: null,
+                price: null,
+                year: null,
+                type: null,
+                nation: null,
+                color: null,
+                vehicleCode: null,
+                amount: null,
             },
-            valueSearch: {
-                id: "",
-                name: "",
-                model: "",
-                price: "",
-                year: "",
-                type: "",
-                nation: "",
-                color: "",
-                vehicleCode: "",
-                amount: "",
+            valueSearchs: {
+                id: null,
+                name: null,
+                model: null,
+                price: null,
+                year: null,
+                typee: null,
+                nation: null,
+                color: null,
+                vehicleCode: null,
+                amount: null,
             },
             valueAdd: {
-                id: '',
-                name: '',
-                model: '',
-                price: '',
-                year: '',
-                type: '',
-                nation: '',
-                color: '',
-                vehicleCode: '',
-                amount: '',
+              
+                name: null,
+                model: null,
+                price: null,
+                year: null,
+                type: null,
+                nation: null,
+                color: null,
+                vehicleCode: null,
+                amount: null,
             }
         }
     },
@@ -62,8 +61,9 @@ export default {
     },
     methods: {
         check() {
-          console.log(this.valueSearch.id);
+          console.log(this.valueSearchs.id);
         },
+
         getAll() {
             axios.get(baseUrl + '/get-all')
                 .then(response => {
@@ -88,7 +88,6 @@ export default {
         findVehicleById(id) {
             axios.get(`${baseUrl}/get-by-id?id=${id}`)
                 .then(response => {
-                    console.log(response.data)
                     this.valueEdit.id = response.data.id;
                     this.valueEdit.name = response.data.name;
                     this.valueEdit.model = response.data.model;
@@ -119,12 +118,14 @@ export default {
         },
 
         findVehicleAny() {
-            axios.get(`${baseUrl}/find-any`, this.valueSearch)
+            axios.post(`${baseUrl}/find-any`, this.valueSearchs)
                 .then(response => {
+                    console.log(this.valueSearchs)
                     console.log(response)
                     this.vehicles = response.data;
                 })
                 .catch(error => {
+                    console.log(this.valueSearchs)
                     console.log(error);
                 })
         },
@@ -139,7 +140,10 @@ export default {
                 .catch(error => {
                     console.log(error);
                 })
-        }
+        },
+
+      
+
     }
 
 

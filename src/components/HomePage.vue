@@ -45,12 +45,12 @@
         <td>
 
           <button @click="findVehicleById(vehicle.id)"
-                  type="button" class="btn btn-primary"
+                  type="submit" class="btn btn-primary"
                   data-toggle="modal" data-target="#exampleModal">
             Edit
           </button>
 
-          <button class="btn btn-danger" @click="deleteVehicle(vehicle.id)">Delete</button>
+          <button type="submit" class="btn btn-danger" @click="deleteVehicle(vehicle.id)">Delete</button>
         </td>
 
       </tr>
@@ -75,7 +75,7 @@
           <form >
             <div class="form-control">
               <label for="recipient-name" class="col-form-label">Id</label>
-              <input type="text" class="form-control"  v-model="valueEdit.id" >
+              <input type="text" class="form-control" readonly  v-model="valueEdit.id" >
               <label for="exampleFormControlInput1">Name</label>
               <input type="text" class="form-control" v-model="valueEdit.name" >
               <label for="exampleFormControlInput1">Model</label>
@@ -125,25 +125,25 @@
           <form >
             <div class="form-control">
               <label for="recipient-name" class="col-form-label">Id</label>
-              <input type="text" class="form-control"  v-model="valueSearch.id" @input="check" >
+              <input type="text" class="form-control"  v-model="valueSearchs.id" @input="check" >
               <label for="exampleFormControlInput1">Name</label>
-              <input type="text" class="form-control" v-model="valueSearch.name" >
+              <input type="text" class="form-control" v-model="valueSearchs.name" >
               <label for="exampleFormControlInput1">Model</label>
-              <input type="text" class="form-control"  v-model="valueSearch.model">
+              <input type="text" class="form-control" v-model="valueSearchs.model">
               <label for="exampleFormControlInput1">Price</label>
-              <input type="text" class="form-control" v-model="valueSearch.price" >
+              <input type="text" class="form-control" v-model="valueSearchs.price" >
               <label for="exampleFormControlInput1">Year</label>
-              <input type="text" class="form-control" v-model="valueSearch.year">
+              <input type="text" class="form-control" v-model="valueSearchs.year">
               <label for="exampleFormControlInput1">Type</label>
-              <input type="text" class="form-control" v-model="valueSearch.type">
+              <input type="text" class="form-control" v-model="valueSearchs.type">
               <label for="exampleFormControlInput1">Nation</label>
-              <input type="text" class="form-control" v-model="valueSearch.nation" >
+              <input type="text" class="form-control" v-model="valueSearchs.nation" >
               <label for="exampleFormControlInput1">Color</label>
-              <input type="text" class="form-control"  v-model="valueSearch.color">
+              <input type="text" class="form-control"  v-model="valueSearchs.color">
               <label for="exampleFormControlInput1">Vehicle Code</label>
-              <input type="text" class="form-control"  v-model="valueSearch.vehicleCode">
+              <input type="text" class="form-control"  v-model="valueSearchs.vehicleCode">
               <label for="exampleFormControlInput1">Amount</label>
-              <input type="text" class="form-control" v-model="valueSearch.amount">
+              <input type="text" class="form-control" v-model="valueSearchs.amount">
 
 
             </div>
@@ -173,33 +173,31 @@
         <div class="modal-body">
           <form >
             <div class="form-control">
-              <label for="recipient-name" class="col-form-label">Id</label>
-              <input type="text" class="form-control"  v-model="valueAdd.id" >
               <label for="exampleFormControlInput1">Name</label>
-              <input type="text" class="form-control" v-model="valueAdd.name" >
+              <input type="text" class="form-control" required v-model="valueAdd.name" >
               <label for="exampleFormControlInput1">Model</label>
-              <input type="text" class="form-control"  v-model="valueAdd.model">
+              <input type="text" class="form-control" required v-model="valueAdd.model">
               <label for="exampleFormControlInput1">Price</label>
-              <input type="text" class="form-control" v-model="valueAdd.price" >
+              <input type="number" class="form-control" required v-model="valueAdd.price" >
               <label for="exampleFormControlInput1">Year</label>
-              <input type="text" class="form-control" v-model="valueAdd.year">
+              <input type="number" class="form-control" required v-model="valueAdd.year">
               <label for="exampleFormControlInput1">Type</label>
-              <input type="text" class="form-control" v-model="valueAdd.type">
+              <input type="text" class="form-control" required v-model="valueAdd.type">
               <label for="exampleFormControlInput1">Nation</label>
-              <input type="text" class="form-control" v-model="valueAdd.nation" >
+              <input type="text" class="form-control" required v-model="valueAdd.nation" >
               <label for="exampleFormControlInput1">Color</label>
-              <input type="text" class="form-control"  v-model="valueAdd.color">
+              <input type="text" class="form-control" required  v-model="valueAdd.color">
               <label for="exampleFormControlInput1">Vehicle Code</label>
-              <input type="text" class="form-control"  v-model="valueAdd.vehicleCode">
+              <input type="text" class="form-control" required  v-model="valueAdd.vehicleCode">
               <label for="exampleFormControlInput1">Amount</label>
-              <input type="text" class="form-control" v-model="valueAdd.amount">
+              <input type="number" class="form-control" required v-model="valueAdd.amount">
             </div>
 
           </form>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" @click="addVehicle">Add</button>
+        <div class="modal-footer"   >
+          <button type="submit" class="btn btn-secondary"   data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary"    data-dismiss="modal" @click="addVehicle">Add</button>
         </div>
       </div>
     </div>
