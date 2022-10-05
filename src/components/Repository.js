@@ -1,12 +1,15 @@
 import axios from 'axios';
 
 const baseUrl = 'http://localhost:8051/swagger-resources/svehicle';
+// const baseUrlExcel = 'http://localhost:8051/swagger-resources/import-excel';
 
 let regexNumber = new RegExp('^[0-9]+$');
+import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 export default {
     data() {
         return {
+            pathFile: '',
             vehicles: []
             , vehicle: {
                 id: null,
@@ -59,7 +62,8 @@ export default {
             },
             page: {
                 page: 1,
-                size: 5
+                size: 5,
+                total: 0
             },
 
             valiValue: {
@@ -87,6 +91,8 @@ export default {
             axios.get(`${baseUrl}/get-all?page=${this.page.page}&size=${this.page.size}`)
                 .then(response => {
                     this.vehicles = response.data;
+                    this.page.total = response.data.totalElements;
+
                 })
                 .catch(error => {
                     console.log(error);
@@ -96,6 +102,7 @@ export default {
         deleteVehicle(id) {
             axios.delete(`${baseUrl}/delete?id=${id}`)
                 .then(
+
                     this.getAll()
                 )
                 .catch(error => {
@@ -123,19 +130,36 @@ export default {
         },
 
         updateVehicle() {
-            axios.put(`${baseUrl}/update`, this.valueEdit)
-                .then(response => {
-                    console.log(response)
-                    console.log(this.valueEdit)
+
+            Swal.fire({
+                title: 'Do you want to save the changes?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'Save',
+                denyButtonText: `Don't save`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+
+                    axios.put(`${baseUrl}/update`, this.valueEdit)
+                        .then(respone => {
+                            Swal.fire('Saved!', '', 'success');
+                            console.log(respone);
+                            this.getAll();
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        })
+                } else if (result.isDenied) {
+                    Swal.fire('Changes are not saved', '', 'info')
                     this.getAll();
-                })
-                .catch(error => {
-                    console.log(error);
-                })
+                }
+            })
+
         },
 
         findVehicleAny() {
-            axios.post(`${baseUrl}/find-any`, this.valueSearchs)
+            axios.post(`${baseUrl}/find-any?page=${this.page.page}&size=${this.page.size}`, this.valueSearchs)
                 .then(response => {
                     this.vehicles = response.data;
                 })
@@ -184,13 +208,29 @@ export default {
             }
         },
         setPage(page) {
-            if(page > 0){
+            if (page > 0) {
                 this.page.page = page;
                 this.getAll();
             }
 
-        }
+        },
+        importFile() {
+            this.pathFile = document.getElementById("customFile").files[0].fullName;
+
+            console.log(this.pathFile)
+        //     axios.post(`${baseUrlExcel}`, this.pathFile)
+        //         .then(response => {
+        //             console.log(response)
+        //             console.log(this.pathFile)
+        //             this.getAll();
+        //         })
+        //         .catch(error => {
+        //             // console.log(this.pathFile)
+        //             console.log(error);
+        //
+        //         })
+        // }
 
 
-        }
     }
+}}

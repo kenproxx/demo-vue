@@ -1,16 +1,51 @@
 <link rel="stylesheet" href="style.css">
 <template>
-  <button
-      type="button" class="btn btn-primary"
-      data-toggle="modal" data-target="#exampleModal1">
-    Search
-  </button>
+
+  <div class="form-control" >
+    <div style="width:  49%; float:left;">
+
+      <label for="exampleFormControlInput1">ID</label>
+      <input type="text" class="form-control " v-model="valueSearchs.id">
+      <label for="exampleFormControlInput1">Name</label>
+      <input type="text" class="form-control" v-model="valueSearchs.name">
+      <label for="exampleFormControlInput1">Model</label>
+      <input type="text" class="form-control" v-model="valueSearchs.model">
+      <label for="exampleFormControlInput1">Price</label>
+      <input type="text" class="form-control" v-model="valueSearchs.price">
+      <label for="exampleFormControlInput1">Year</label>
+      <input type="text" class="form-control" v-model="valueSearchs.year">
+
+    </div>
+
+    <div style="width:  49%; float: right">
+
+
+      <label for="exampleFormControlInput1">Type</label>
+      <input type="text" class="form-control" v-model="valueSearchs.type">
+      <label for="exampleFormControlInput1">Nation</label>
+      <input type="text" class="form-control" v-model="valueSearchs.nation">
+      <label for="exampleFormControlInput1">Color</label>
+      <input type="text" class="form-control" v-model="valueSearchs.color">
+      <label for="exampleFormControlInput1">Vehicle Code</label>
+      <input type="text" class="form-control" v-model="valueSearchs.vehicleCode">
+      <label for="exampleFormControlInput1">Amount</label>
+      <input type="text" class="form-control" v-model="valueSearchs.amount">
+    </div>
+
+    <button type="button" class="btn btn-primary" style="margin: 1%" data-dismiss="modal" @click="findVehicleAny">
+      Search
+    </button>
+
+  </div>
+
+
 
   <button
-      type="button" class="btn btn-primary"
+      type="button" class="btn btn-primary" style="margin: 1%"
       data-toggle="modal" data-target="#exampleModal2">
     Add
   </button>
+
 
   <div style="height: 400px; overflow: auto; padding: 10px">
     <table class="table">
